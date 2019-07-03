@@ -1,11 +1,10 @@
 import React, {
-    Fragment,
     useState,
     useEffect,
     useReducer,
     useRef
   } from "react";
-  
+
   /*
   *Add State to a React Function Component with the useState Hook** - Historically, you had to use a React Class Component in order to maintain state in a component. However, with Hooks, you can now add state to a Function Component using the useState hook. In this lesson, we will explain how to use this API and then convert a portion of an existing Class Component to a Function Component.
     - useState to capture input text (text) - display length countdown
@@ -17,7 +16,7 @@ import React, {
     - Show useLegacyState Hook that will merge (if needed)
     - Explain React Team's recommendation to "split state into multiple state variables based on which values tend to change together" --[Hooks FAQ](https://reactjs.org/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)
   */
-  
+
   const useTodoList = () => {
     const nextTodoId = useRef(0);
     return useReducer((state, action) => {
@@ -35,14 +34,14 @@ import React, {
       }
     }, []);
   };
-  
+
   function getColor(value) {
     // http://jsfiddle.net/jongobar/sNKWK/
     //value from 0 to 1
     var hue = ((1 - value) * 120).toString(10);
     return ["hsl(", hue, ",100%,50%)"].join("");
   }
-  
+
   function TodoList() {
     const inputRef = useRef();
     const [todos, dispatch] = useTodoList([]);
@@ -84,4 +83,3 @@ import React, {
       </div>
     );
   }
-  

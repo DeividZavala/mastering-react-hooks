@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React  from "react";
 import styled from "react-emotion";
 
 const NEW_TODO_MAX_LENGTH = 42;
-const NEW_TODO_WARNING_LENGTH = 25;
+// const NEW_TODO_WARNING_LENGTH = 25;
 
 const Input = styled("input")`
   border: 2px solid rgba(255, 255, 255, 0.5);

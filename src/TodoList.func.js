@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import styled from "react-emotion";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
