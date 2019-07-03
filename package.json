@@ -64,7 +64,9 @@
   },
   "eslintConfig": {
     "extends": "react-app",
-    "plugins": ["react-hooks"],
+    "plugins": [
+      "react-hooks"
+    ],
     "rules": {
       "react-hooks/rules-of-hooks": "error"
     }
@@ -124,5 +126,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }

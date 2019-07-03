@@ -33,12 +33,12 @@ const TodoList = props => {
     setNewTodo(e.target.value);
   };
 
-  const handleNewSubmit = e => {
+  const handleNewSubmit = (e) => {
     e.preventDefault();
     updateTodos(prevTodos => [
           ...prevTodos,
           { id: uniqueId(), text: newTodo, completed: false }
-        ]
+				]
       );
     setNewTodo("")
   };
