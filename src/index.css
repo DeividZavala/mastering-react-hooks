@@ -30,6 +30,13 @@ section {
   align-items: center;
   margin: 2rem;
 }
+section > svg {
+	width: 25vh;
+}
+section > div {
+	font-size: 4rem;
+	color: #37f53b;
+}
 section input[type="text"] {
   border: 2px solid rgba(255, 255, 255, 0.5);
   font-size: 1.75em;

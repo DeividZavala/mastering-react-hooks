@@ -12,10 +12,9 @@ const BatteryContainer = () => {
 		let battery;
 		navigator.getBattery().then(bat => {
 			battery = bat;
-			console.log(bat)
 			battery.addEventListener("levelchange", handleChange);
 			battery.addEventListener("chargingchange", handleChange);
-			handleChange(battery );
+			handleChange(battery);
 		});
 		return () => {
 			battery.removeEventListener("levelchange", handleChange);
