@@ -25,7 +25,7 @@ const Item = styled("li")`
   }
 `;
 
-export default function TodoItem({ todo, onChange, onDelete }) {
+export default function TodoItem({ todo, onChange, onDelete, onshowInfo }) {
   return (
     <Item key={todo.id}>
       <Checkbox
@@ -34,6 +34,7 @@ export default function TodoItem({ todo, onChange, onDelete }) {
         checked={todo.completed}
         onChange={onChange.bind(this, todo.id)}
       />
+			<Button onClick={onshowInfo}>?</Button>
       <Button onClick={onDelete.bind(this, todo.id)}>x</Button>
     </Item>
   );

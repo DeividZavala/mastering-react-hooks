@@ -85,6 +85,15 @@ section ul > li:last-of-type:after {
   content: "checked";
 }
 
+[data-reach-dialog-content] {
+	position: relative;
+	background-image: linear-gradient(
+		to top,
+		#e6e9f0 0%,
+		#eef1f5 100%
+	) !important;
+}
+
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: rgba(255, 255, 255, 0.5);
