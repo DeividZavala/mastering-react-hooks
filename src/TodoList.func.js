@@ -1,43 +1,30 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
 import About from "./About";
 import { Container, List } from "./Styled";
+import {useLocalStorage, useDocumentTitle, useKeyDown} from './Hooks';
 
 export default function TodoList() {
 	const [newTodo, updateNewTodo] = useState("");
 	let todoId = useRef(0);
 
-	const initialTodos = () => {
-		const valuesFromStorage = JSON.parse(localStorage.getItem("todos") || "[]");
-		todoId.current = valuesFromStorage.reduce((memo, todo) => Math.max(memo, todo.id), 0);
-		return valuesFromStorage;
-	};
-
-	const [todos, updateTodos] = useState(initialTodos);
-	useEffect(
-		() => {
-			localStorage.setItem("todos", JSON.stringify(todos));
-		},
-		[todos]
-	);
-	useEffect(() => {
-		const inCompleteTodos = todos.reduce(
-			(memo, todo) => (!todo.completed ? memo + 1 : memo),
-			0
-		);
-		document.title = inCompleteTodos ? `Todos (${inCompleteTodos})` : "Todos";
+	const [todos, updateTodos] = useLocalStorage("todos",[], values => {
+		todoId.current = values.reduce((memo, todo) => Math.max(memo, todo.id), 0);
 	});
-	let [showAbout, setShowAbout] = useState(false);
-	useEffect(() => {
-		const handleKey = ({ key }) => {
-			setShowAbout(show =>
-				key === "?" ? true : key === "Escape" ? false : show
-			);
-		};
-		document.addEventListener("keydown", handleKey);
-		return () => document.removeEventListener("keydown", handleKey);
-	}, []);
+
+	const inCompleteTodos = todos.reduce(
+		(memo, todo) => (!todo.completed ? memo + 1 : memo),
+		0
+	);
+	const title = inCompleteTodos ? `Todos (${inCompleteTodos})` : "Todos";
+	useDocumentTitle(title);
+
+
+	let [showAbout, setShowAbout] = useKeyDown({
+		"?":  true,
+		"Escape": false
+	}, false);
 
 	const handleShowInfo = () => setShowAbout(true);
 
